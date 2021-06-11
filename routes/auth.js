@@ -20,13 +20,12 @@ router.post('/register', async (req, res)=>{
         const user = await newUser.save();
         res.status(200).json(user);
     }catch(error){
-        console.log(error);
-        res.status(500);
+        res.status(500).json(error);
     }
 });
 
 //LOGIN
-router.get('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     try{
         //Check email
         const user = await User.findOne({email: req.body.email});
@@ -38,7 +37,7 @@ router.get('/login', async (req, res) => {
 
         res.status(200).json(user);
     }catch(error){
-        console.log(error);
+        res.status(500).json(error);
     }
 })
 
