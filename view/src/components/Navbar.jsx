@@ -4,7 +4,7 @@ import {Search, Person, Chat, Notifications} from '@material-ui/icons';
 
 export default function Navbar() {
     return (
-        <div class="navbarContainer">
+        <div className="navbarContainer">
             <div className="navbarLeft">
                 <span className="logo">Stranger</span>
             </div>
