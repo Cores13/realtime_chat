@@ -1,0 +1,97 @@
+.share {
+    width: 100%;
+    height: 170px;
+    border-radius: 10px;
+    background-color: #2b2b2b;
+    /* outline: none; */
+    -webkit-box-shadow: inset -1px 1px 8px 1px #80d0c7, 2px 2px 6px 0px #53547a, 5px 5px 5px 1px rgba(0,0,0,0); 
+    box-shadow: inset -1px 1px 8px 1px #80d0c7, 2px 2px 6px 0px #53547a, 5px 5px 5px 1px rgba(0,0,0,0);
+    align-items: center;
+    margin: 15px auto;
+}
+.shareWrapper {
+    padding: 15px;
+    margin: 10px auto;
+}
+.shareTop {
+    display: flex;
+}
+.shareProfileImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.shareInput {
+    border: none;
+    width: 90%;
+    outline: none;
+    color:white;
+    background-color: transparent;
+}
+.shareHr {
+    margin: 20px 0;
+}
+.shareBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.shareOptions {
+    display: flex;
+    margin-left: 20px;
+}
+.shareOption {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+}
+.shareIcon {
+    font-size: 18px;
+    margin-right: 3px;
+    fill: url('#my-gradient-aqua') #80d0c7 !important;
+}
+#tag {
+    fill: url('#my-gradient-purple') #333399 !important;
+}
+#emoji {
+    fill: url('#my-gradient-orange') orange !important;
+}
+#location {
+    fill: url('#my-gradient-blue') #5B86E5 !important;
+}
+/* .shareButton {
+    background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+    border: none;
+    padding: 7px;
+    border-radius: 12px;
+    transition: 0.5s;
+}
+.shareButton:hover{
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+} 
+*/
+
+.shareButton {background-image: linear-gradient(to right, #13547a 0%, #80d0c7  51%, #13547a  100%)}
+.shareButton {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   /* text-transform: uppercase; */
+   transition: 0.5s;
+   background-size: 200% auto;
+   /* color: white;             */
+   /* box-shadow: 0 0 20px #eee; */
+   border-radius: 10px;
+   display: block; 
+ }
+
+ .shareButton {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }

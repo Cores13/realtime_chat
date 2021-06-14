@@ -1,8 +1,6 @@
 *{
     color: black;
     font-weight: 600;
-    align-items: center;
-    justify-content: center;
 }
 .navbarContainer {
     height: 50px;
@@ -42,7 +40,8 @@
 .searchInput {
     border: none;
     width: 90%;
-    outline: none;  
+    outline: none;
+    color: black !important;
 }
 .navbarRight {
     flex: 4;
