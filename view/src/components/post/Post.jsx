@@ -8,19 +8,8 @@ export default function Post({post}) {
     const [isLiked, setIsLike] = useState(false);
 
     const likeHandler = () => {
-        setLike(isLiked ? like-1 : like +1);
+        setLike(isLiked ? like-1 : like+1);
         setIsLike(!isLiked);
-
-        // const likeIcon = document.querySelector('.likeIcon');
-        // const likeIconClass = likeIcon.getAttribute('className');
-        // console.log('Class: ' + likeIconClass);
-        // console.log('Elem: ' + likeIcon);
-        // if(isLiked){
-        //     likeIcon.removeAttribute('className');
-        //     likeIcon.setAttribute('className', 'likeIcon');
-        // }else if(!isLiked){
-        //     likeIcon.setAttribute('className', 'likeIcon liked');
-        // }
     }
 
     return (
