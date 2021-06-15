@@ -1,5 +1,7 @@
 import './sidebar.css';
-import { RssFeed, Chat, VideoLibrary, Stars } from '@material-ui/icons'
+import { RssFeed, Chat, VideoLibrary, Stars } from '@material-ui/icons';
+import {Users} from '../../dummyData';
+import Friend from '../friend/Friend';
 
 export default function Sidebar() {
     return (
@@ -26,86 +28,7 @@ export default function Sidebar() {
                 {/* <button className="sidebarButton">Show More</button> */}
                 <hr className="sidebarHr" />
                 <ul className="sidebarFriendList">
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/ivana.png" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Ivana Veselinović</span>
-                    </li>
+                    {Users.map(u=> <Friend key={u.id} user={u} />)}
                 </ul>
             </div>
         </div>
