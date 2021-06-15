@@ -1,5 +1,6 @@
 import './feed.css';
 import Share from '../shared/Share';
+import Post from '../post/Post';
 
 export default function Feed() {
     return (
@@ -7,6 +8,7 @@ export default function Feed() {
         <div className="feed">
             <div className="feedWrapper">
                 <Share />
+                <Post />
             </div>
         </div>
         </>

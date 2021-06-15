@@ -1,3 +1,7 @@
 .feed{
     flex: 6;
 }
+.feedWrapper {
+    margin: 0 auto;
+    width: 95%;
+}

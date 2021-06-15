@@ -33,7 +33,7 @@ export default function Share() {
                             <span className="shareOptionText">Emoji</span>
                         </div>
                     </div>
-                    <button className="shareButton">Share</button>
+                    <button className="shareButton bg-gradient2">Share</button>
                 </div>
             </div>
         </div>
