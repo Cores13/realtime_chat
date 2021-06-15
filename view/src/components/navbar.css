@@ -11,6 +11,7 @@
     justify-content: center;
     position: sticky;
     top: 0;
+    z-index: 1000;
 }
 .logo {
     font-size: 24px;
@@ -36,6 +37,7 @@
 .searchIcon {
     font-size: 20px !important;
     margin-left: 5px;
+    fill: black !important;
 }
 .searchInput {
     border: none;

@@ -8,8 +8,7 @@
     background-color: #2b2b2b;
     max-height: calc(100vh - 50px);
     overflow-y: scroll;
-    position: fixed;
-    
+    position: sticky;
 }
 .rightbarFriendList {
     padding: 0;
