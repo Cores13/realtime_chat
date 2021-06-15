@@ -2,8 +2,8 @@
     width: 100%;
     border-radius: 10px;
     background-color: #2b2b2b;
-    -webkit-box-shadow: inset -1px 1px 8px 1px #39fad7, 2px 2px 6px 0px #53547a, 5px 5px 5px 1px rgba(0,0,0,0); 
-    box-shadow: inset -1px 1px 8px 1px #39fad7, 2px 2px 6px 0px #53547a, 5px 5px 5px 1px rgba(0,0,0,0);
+    -webkit-box-shadow: inset -1px 1px 3px 1px #39fad7, 1px 1px 3px 0px #53547a, 1px 1px 3px 1px rgba(0,0,0,0); 
+    box-shadow: inset -1px 1px 3px 1px #39fad7, 1px 1px 3px 0px #53547a, 1px 1px 3px 1px rgba(0,0,0,0);
     margin: 30px auto;
     padding: 10px 0;
 }
@@ -25,13 +25,16 @@
     border-radius: 50%;
     object-fit: cover;
 }
-.postUsername {
+.postUsername, .postLikeCounter {
     font-size: 15px;
     font-weight: 500;
     margin: 0 10px;
 }
-.postDate, .postLikeCounter {
+.postDate {
     font-size: 12px !important;
+    font-weight: 400 !important;
+}
+.postText {
     font-weight: 400 !important;
 }
 .postCenter {
@@ -40,11 +43,35 @@
 .postImg{
     margin-top: 10px;
     width: 100%;
-    max-height: 700px;
+    max-height: 500px;
     object-fit: contain;
 }
 .postBottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.postBottomLeft {
+    display: flex;
+    align-items: center;
+}
+.likeIcon {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    cursor: pointer;
+    fill: white !important;
+}
+.liked {
+    fill: url('#my-gradient-red') red !important;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.postCommentText {
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 400;
+    margin-right: 20px;
 }

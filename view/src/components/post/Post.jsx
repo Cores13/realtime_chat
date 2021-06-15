@@ -1,5 +1,5 @@
 import './post.css';
-import {MoreVert, Stars} from '@material-ui/icons';
+import {MoreVert, Favorite, FavoriteBorder} from '@material-ui/icons';
 
 export default function Post() {
     return (
@@ -24,7 +24,8 @@ export default function Post() {
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">
-                        <Stars className="likeIcon"/>
+                        {/* <FavoriteBorder className="likeIcon liked"/> */}
+                        <Favorite className="likeIcon liked"/>
                         <span className="postLikeCounter">32 people liked it</span>
                     </div>
                     <div className="postBottomRight">
