@@ -9,7 +9,7 @@ export default function Profile() {
         <>
         <Navbar />
         <div className="profileContainer">
-            <Sidebar />
+            {/* <Sidebar /> */}
             <div className="profileRight">
                 <div className="profileRightTop">
                     <div className="profileCover">
@@ -24,8 +24,8 @@ export default function Profile() {
                     </div>
                 </div>
                 <div className="profileRightBottom">
-                    <Feed style="flex-wrap: wrap;"/>
-                    {/* <Rightbar /> */}
+                    <Feed />
+                    <Rightbar profile/>
                 </div>
             </div>
         </div>
