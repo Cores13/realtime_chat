@@ -41,4 +41,46 @@
     box-shadow: -1px 0px 3px 1px rgba(0,0,0,0.35);
     -webkit-box-shadow: -1px 0px 3px 1px rgba(0,0,0,0.35);
     -moz-box-shadow: -1px 0px 3px 1px rgba(0,0,0,0.35);
+    justify-content: space-between;
+}
+.loginInput {
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid darkgrey;
+    padding-left: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    outline: none;
+    color: black;
+}
+.loginButton {
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background: #536976;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #141E30, #3d72b4, aqua);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #141E30 -50%, #3d72b4 70%, aqua 150%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    /* opacity: 0.7; */
+}
+.loginForgot {
+    text-align: center;
+}
+.loginRegisterButton {
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    /* background: #536976;  
+    background: -webkit-linear-gradient(to top,#f12711 -20%, darkorange 50%, #f5af19 120%);
+    background: linear-gradient(to top,#f12711 -20%, darkorange 50%, #f5af19 120%); */
+    background: #536976;  
+    background: -webkit-linear-gradient(to top,#FF4E50 -20%, #F9D423 120%); 
+    background: linear-gradient(to top,#FF4E50 -20%, #F9D423 120%);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
 }
