@@ -5,6 +5,7 @@ import Rightbar from '../../components/rightbar/Rightbar';
 import Feed from '../../components/feed/Feed';
 
 export default function Profile() {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     return (
         <>
         <Navbar />
@@ -14,9 +15,9 @@ export default function Profile() {
                 <div className="profileRightTop">
                     <div className="profileCover">
                         {/* eslint-disable-next-line */}
-                        <img src="assets/post/3.jpeg" alt="Cover picture" className="profileCoverImg" />
+                        <img src={`${PF}post/3.jpeg`} alt="Cover picture" className="profileCoverImg" />
                         {/* eslint-disable-next-line */}
-                        <img src="assets/person/7.jpeg" alt="Profile picture" className="profileUserImg" />
+                        <img src={`${PF}person/7.jpeg`} alt="Profile picture" className="profileUserImg" />
                     </div>
                     <div className="profileInfo">
                         <h4 className="profileInfoName">Dzix Dzinic</h4>

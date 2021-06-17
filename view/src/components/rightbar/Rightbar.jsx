@@ -3,6 +3,7 @@ import {Users} from '../../dummyData';
 import Online from '../online/Online';
 
 export default function Rightbar({profile}) {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const HomeRightbar = () => {
         return (<>
             <h4 className="rightbarTitle">Online Friends</h4>
@@ -35,29 +36,25 @@ export default function Rightbar({profile}) {
             <h4 className="rightbarFollowingTitle">Following</h4>
             <div className="rightbarFollowings">
                 <div className="rightbarFollowing">
-                    <img src="assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
+                    <img src="http://localhost:3000/assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">John Cena</span>
                 </div>
                 <div className="rightbarFollowing">
-                    <img src="assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
+                    <img src="http://localhost:3000/assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">John Cena</span>
                 </div>
                 <div className="rightbarFollowing">
-                    <img src="assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
+                    <img src="http://localhost:3000/assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">John Cena</span>
                 </div>
                 <div className="rightbarFollowing">
-                    <img src="assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
+                    <img src="http://localhost:3000/assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">Amir Kasumović</span>
                 </div>
                 <div className="rightbarFollowing">
-                    <img src="assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
+                    <img src="http://localhost:3000/assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">John Cena</span>
                 </div>
-                {/* <div className="rightbarFollowing">
-                    <img src="assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">John Cena</span>
-                </div> */}
             </div>
             <h4 className="rightbarFollowingTitle">Followers</h4>
             </>
