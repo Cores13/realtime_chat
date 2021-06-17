@@ -15,9 +15,9 @@ export default function Profile() {
                 <div className="profileRightTop">
                     <div className="profileCover">
                         {/* eslint-disable-next-line */}
-                        <img src={`${PF}post/3.jpeg`} alt="Cover picture" className="profileCoverImg" />
+                        <img src={`${PF}post/3.jpeg` || PF+ "person/noCover.jpg"} alt="Cover picture" className="profileCoverImg" />
                         {/* eslint-disable-next-line */}
-                        <img src={`${PF}person/7.jpeg`} alt="Profile picture" className="profileUserImg" />
+                        <img src={`${PF}person/7.jpeg` || PF+ "person/noAvatar.png"} alt="Profile picture" className="profileUserImg" />
                     </div>
                     <div className="profileInfo">
                         <h4 className="profileInfoName">Dzix Dzinic</h4>
