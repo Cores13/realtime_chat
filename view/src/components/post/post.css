@@ -19,6 +19,13 @@
 .postTopLeft {
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+.postTopLeft a {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    align-items: center;
 }
 .postProfileImg {
     width: 40px;

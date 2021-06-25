@@ -5,3 +5,8 @@
     margin: 0 auto;
     width: 75%;
 }
+.feedPostWrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 0 auto;
+}

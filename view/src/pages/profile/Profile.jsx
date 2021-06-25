@@ -4,8 +4,19 @@ import Sidebar from '../../components/sidebar/Sidebar';
 import Rightbar from '../../components/rightbar/Rightbar';
 import Feed from '../../components/feed/Feed';
 
+
 export default function Profile() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        const fetchUser = async () =>{
+            const res = await axios.get(`/users/${post.userId}`);
+            setUser(res.data);
+        };
+        fetchUser();
+    }, [post.userId]);
+
     return (
         <>
         <Navbar />
@@ -25,7 +36,7 @@ export default function Profile() {
                     </div>
                 </div>
                 <div className="profileRightBottom">
-                    <Feed />
+                    <Feed username="adi"/>
                     <Rightbar profile/>
                 </div>
             </div>
