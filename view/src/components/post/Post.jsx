@@ -39,12 +39,11 @@ export default function Post({post}) {
                 <div className="postCenter">
                     <span className="postText">{post?.desc}</span>
                     {/* eslint-disable-next-line */}
-                    <img src={PF + post.img} alt="Post picture" className="postImg" />
+                    <img src={PF+post.img} alt="Post picture" className="postImg" />
                     
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">
-                        {/* <FavoriteBorder className="likeIcon liked"/> */}
                         <Favorite className={`likeIcon ${isLiked ? "liked" : " "}`} onClick={likeHandler} />
                         <span className="postLikeCounter">{like} people liked it</span>
                     </div>
