@@ -43,6 +43,13 @@
     -moz-box-shadow: -1px 0px 3px 1px rgba(0,0,0,0.35);
     justify-content: space-between;
 }
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 100%;
+    justify-content: space-between;
+}
 .loginInput {
     height: 50px;
     border-radius: 10px;
