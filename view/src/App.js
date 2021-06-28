@@ -21,7 +21,6 @@ function App() {
     <Router>
         <Switch>
           <Route exact path="/">
-            {/* <Home/> */}
             {user ? <Home /> : <Login/>}
           </Route>
           <Route path="/login">
