@@ -5,44 +5,38 @@ import { AuthContext } from '../../context/AuthContext.js';
 import {useRef} from 'react';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
+const FormData = require('form-data');
 
 export default function Share() {
     const {user} = useContext(AuthContext);
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const desc = useRef();
 
-    const [photo, setPhoto] = useState(null);
-    const [video, setVideo] = useState(null);
+    const [file, setFile] = useState(null);
+    var imgCount = 0;
 
     const submitHandler = async (e) => {
         e.preventDefault();
         const newPost = {
             userId: user._id,
-            desc: desc.current.value
-        }
-        if(photo){
+            desc: desc.current.value,
+            img: {
+                type: String
+            }
+        };
+        if(file){
             const data = new FormData();
-            const photoname = Date.now() + photo.name;
-            data.append('photo', photo);
-            data.append('name', photoname);
-            newPost.img = photoname;
+            const fileName = imgCount + file.name;
+            imgCount++;
+            data.append('file', file);
+            data.append('name', fileName);
+            newPost.img = fileName;
             try {
-                await axios.post('/uploadphoto', data);
+                await axios.post('/upload', data);
             }catch (error) {
                 console.log(error);
             }
-        }else if(video){
-            const data = new FormData();
-            const videoname = Date.now() + video.name;
-            data.append('video', video);
-            data.append('name', videoname);
-            newPost.img = videoname;
-            try {
-                await axios.post('/uploadvideo', data);
-            }catch (error) {
-                console.log(error);
-            }
-        }
+        };
         try {
             await axios.post('/posts', newPost);
         }catch (error) {
@@ -58,16 +52,12 @@ export default function Share() {
                 </div>
                 <hr className="shareHr" />
                 <form className="shareBottom" onSubmit={submitHandler} >
+                {/* <form className="shareBottom" > */}
                     <div className="shareOptions">
-                        <label htmlFor="video" className="shareOption">
-                            <MovieFilter className="shareIcon" />
-                            <span className="shareOptionText">Video</span>
-                            <input style={{display: "none"}} type="file" id="video" accept=".mp4" onChange={(e)=>setVideo(e.target.files[0])}/>
-                        </label>
-                        <label htmlFor="photo" className="shareOption">
+                        <label htmlFor="file" className="shareOption">
                             <Photo className="shareIcon" />
-                            <span className="shareOptionText">Photo</span>
-                            <input style={{display: "none"}} type="file" id="photo" accept=".png,.jpeg,.jpg" onChange={(e)=>setPhoto(e.target.files[0])}/>
+                            <span className="shareOptionText">Photo or Video</span>
+                            <input style={{display: "none"}} type="file" id="file" accept=".png,.jpeg,.jpg,.mp4" onChange={(e)=>setFile(e.target.files[0])}/>
                         </label>
                         <div className="shareOption">
                             <LocalOffer className="shareIcon" id="tag"/>

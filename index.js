@@ -18,44 +18,24 @@ app.use('/images', express.static(path.join(__dirname, 'public/images')));
 app.use(express.json());
 app.use(helmet());
 app.use(morgan('common'));
-
+var imgCount =0;
 const imageUpload = multer({
     storage: multer.diskStorage({
       destination: (req, file, callback) => {
         // let type = req.params.type;
-        let path = `./public/images`;
-        fs.mkdirsSync(path);
-        callback(null, path);
+        let way = `./public/images`;
+        fs.mkdirsSync(way);
+        callback(null, `public/images`);
       },
       filename: (req, file, callback) => {
         //originalname is the uploaded file's name with extn
-        callback(null, req.body.name);
-      }
-    })
-  });
-const videoUpload = multer({
-    storage: multer.diskStorage({
-      destination: (req, file, callback) => {
-        // let type = req.params.type;
-        let path = `./public/videos`;
-        fs.mkdirsSync(path);
-        callback(null, path);
-      },
-      filename: (req, file, callback) => {
-        //originalname is the uploaded file's name with extn
-        callback(null, req.body.name);
+        callback(null, (imgCount + file.originalname));
+        imgCount++;
       }
     })
   });
 
-app.post('/api/uploadvideo', videoUpload.single('video'), (req, res)=> {
-    try{
-        return res.status(200).json('File uploaded successful');
-    }catch(error){
-        console.log(error);
-    }
-});
-app.post('/api/uploadphoto', imageUpload.single('photo'), (req, res)=> {
+app.post('/api/upload', imageUpload.single('file'), (req, res)=> {
     try{
         return res.status(200).json('File uploaded successful');
     }catch(error){
