@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthContext.js';
 import {useRef} from 'react';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-const FormData = require('form-data');
+// const FormData = require('form-data');
 
 export default function Share() {
     const {user} = useContext(AuthContext);
@@ -26,11 +26,10 @@ export default function Share() {
         };
         if(file){
             const data = new FormData();
-            const fileName = imgCount + file.name;
-            imgCount++;
-            data.append('file', file);
-            data.append('name', fileName);
+            const fileName = Date.now() + file.name;
+            data.append('file', file, fileName);
             newPost.img = fileName;
+            console.log(data);
             try {
                 await axios.post('/upload', data);
             }catch (error) {
@@ -39,6 +38,7 @@ export default function Share() {
         };
         try {
             await axios.post('/posts', newPost);
+            window.location.reload();
         }catch (error) {
             console.log(error);
         }

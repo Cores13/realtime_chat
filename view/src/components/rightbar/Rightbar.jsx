@@ -1,8 +1,35 @@
 import './rightbar.css';
 import {Users} from '../../dummyData';
 import Online from '../online/Online';
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 export default function Rightbar({user}) {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const [followers, setFollowers] = useState([]);
+    const [following, setFollowing] = useState([]);
+
+    useEffect(() => {
+        const getFollowing = async () => {
+            try {
+                const followingList = await axios.get('/users/following/' + user._id);
+                setFollowing(followingList.data);
+            }catch (error) {
+                console.log(error);
+            }
+        };
+        const getFollowers = async () => {
+            try {
+                const followersList = await axios.get('/users/followers/' + user._id);
+                setFollowers(followersList.data);
+            }catch (error) {
+                console.log(error);
+            }
+        };
+        getFollowing();
+        getFollowers();
+    },[user._id]);
+
     const HomeRightbar = () => {
         return (<>
             <h4 className="rightbarTitle">Online Friends</h4>
@@ -34,28 +61,22 @@ export default function Rightbar({user}) {
             <hr className="rightbarHr" />
             <h4 className="rightbarFollowingTitle">Following</h4>
             <div className="rightbarFollowings">
-                <div className="rightbarFollowing">
-                    <img src="http://localhost:3000/assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">John Cena</span>
+                {following.map(friend=>(
+                    <div className="rightbarFollowing">
+                    <img src={friend.profilePicture ? PF + friend.profilePicture : PF + '/noAvatar.png'} alt="Following profile pic" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">{friend.username}</span>
                 </div>
-                <div className="rightbarFollowing">
-                    <img src="http://localhost:3000/assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">John Cena</span>
-                </div>
-                <div className="rightbarFollowing">
-                    <img src="http://localhost:3000/assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">John Cena</span>
-                </div>
-                <div className="rightbarFollowing">
-                    <img src="http://localhost:3000/assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">Amir Kasumović</span>
-                </div>
-                <div className="rightbarFollowing">
-                    <img src="http://localhost:3000/assets/person/6.jpeg" alt="Following profile pic" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">John Cena</span>
-                </div>
+                ))}        
             </div>
             <h4 className="rightbarFollowingTitle">Followers</h4>
+            <div className="rightbarFollowings">
+                {followers.map(friend=>(
+                    <div className="rightbarFollowing">
+                    <img src={friend.profilePicture ? PF + friend.profilePicture : PF + '/noAvatar.png'} alt="Following profile pic" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">{friend.username}</span>
+                </div>
+                ))}        
+            </div>
             </>
         )
     }

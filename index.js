@@ -18,7 +18,7 @@ app.use('/images', express.static(path.join(__dirname, 'public/images')));
 app.use(express.json());
 app.use(helmet());
 app.use(morgan('common'));
-var imgCount =0;
+
 const imageUpload = multer({
     storage: multer.diskStorage({
       destination: (req, file, callback) => {
@@ -29,8 +29,11 @@ const imageUpload = multer({
       },
       filename: (req, file, callback) => {
         //originalname is the uploaded file's name with extn
-        callback(null, (imgCount + file.originalname));
-        imgCount++;
+        var name = (req.body.fileName);
+        console.log(req.body);
+        console.log(typeof name);
+        callback(null, file.originalname);
+
       }
     })
   });
