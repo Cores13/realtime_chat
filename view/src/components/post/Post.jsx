@@ -3,7 +3,7 @@ import {MoreVert, Favorite} from '@material-ui/icons';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import { format } from 'timeago.js';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import {useContext} from 'react';
 import { AuthContext } from '../../context/AuthContext.js';
 

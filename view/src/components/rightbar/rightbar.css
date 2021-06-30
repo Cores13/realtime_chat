@@ -4,6 +4,7 @@
     max-height: calc(100vh - 50px);
     padding-top: 20px;
     overflow-y: hidden;
+    border-radius: 20px;
 }
 .rightbarWrapper {
     margin-left: 15px;
@@ -64,4 +65,23 @@
 .rightbarFollowingName {
     font-size: 10px;
     font-weight: 300;
+    text-decoration: none;
+}
+.rightbarFollowings a {
+    text-decoration: none;
+}
+.rightbarFollowButton {
+    display: flex;
+    padding: 5px;
+    margin: 0 auto;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    background: linear-gradient(15deg, #13547a 0%, #39fad7 100%);
+    outline: none;
+    border: none;
+    cursor: pointer;
 }
