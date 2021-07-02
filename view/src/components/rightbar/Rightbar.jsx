@@ -9,14 +9,14 @@ import {useContext} from 'react';
 import { AuthContext } from '../../context/AuthContext.js';
 
 export default function Rightbar({user}) {
-    const {user: currentUser, dispatch} = useContext(AuthContext);
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const [followers, setFollowers] = useState([]);
     const [followings, setFollowings] = useState([]);
-    const [followed, setFollowed] = useState(currentUser.following.includes(user?.id));
+    const {user: currentUser, dispatch} = useContext(AuthContext);
+    const [followed, setFollowed] = useState(currentUser.followings.includes(user?._id));
 
     useEffect(() => {
-        setFollowed(currentUser.following.includes(user?.id))
+        setFollowed(currentUser.following.includes(user?.id));
     }, [currentUser, user.id]);
 
     useEffect(() => {
@@ -38,16 +38,19 @@ export default function Rightbar({user}) {
         };
         getFollowing();
         getFollowers();
-    },[user._id]);
+    },[user._id, followed]);
+
 
     const followHandler = async () => {
         try{
             if(followed){
-                await axios.put('/users/' + user._id + '/unfollow', {userId:currentUser._id});
+                await axios.put('/users/' + user._id + '/unfollow', {userId: currentUser._id});
                 dispatch({type: "UNFOLLOW", payload: user._id});
+                setFollowed(!followed);
             }else {
-                await axios.put('/users/' + user._id + '/follow', {userId:currentUser._id});
+                await axios.put('/users/' + user._id + '/follow', {userId: currentUser._id});
                 dispatch({type: "FOLLOW", payload: user._id});
+                setFollowed(!followed);
             }
         }catch (error) {
             console.log(error);
@@ -90,7 +93,7 @@ export default function Rightbar({user}) {
             <h4 className="rightbarFollowingTitle">Following</h4>
             <div className="rightbarFollowings">
                 {followings.map(friend=>(
-                    <Link to={'/profile/' + friend.username}>
+                    <Link key={friend._id} to={'/profile/' + friend.username}>
                     <div className="rightbarFollowing">
                     <img src={friend.profilePicture ? PF + friend.profilePicture : PF + '/noAvatar.png'} alt="Following profile pic" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">{friend.username}</span>
@@ -101,7 +104,7 @@ export default function Rightbar({user}) {
             <h4 className="rightbarFollowingTitle">Followers</h4>
             <div className="rightbarFollowings">
                 {followers.map(friend=>(
-                    <Link to={'/profile/' + friend.username}>
+                    <Link key={friend._id} to={'/profile/' + friend.username}>
                     <div className="rightbarFollowing">
                     <img src={friend.profilePicture ? PF + friend.profilePicture : PF + '/noAvatar.png'} alt="Following profile pic" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">{friend.username}</span>
