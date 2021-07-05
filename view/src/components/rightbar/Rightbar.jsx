@@ -36,7 +36,7 @@ export default function Rightbar({user}) {
         };
         getFollowing();
         getFollowers();
-    },[user._id, followed]);
+    },[user, followed]);
 
     useEffect(() => {
         const followState = async () =>{

@@ -1,5 +1,5 @@
 import './share.css'
-import { MovieFilter, Photo, LocalOffer, Room, EmojiEmotions } from '@material-ui/icons';
+import { MovieFilter, Photo, LocalOffer, Room, EmojiEmotions, Cancel } from '@material-ui/icons';
 import {useContext} from 'react';
 import { AuthContext } from '../../context/AuthContext.js';
 import {useRef} from 'react';
@@ -51,6 +51,12 @@ export default function Share() {
                     <input placeholder="Write something awesome!" className="shareInput" ref={desc}/>
                 </div>
                 <hr className="shareHr" />
+                {file && (
+                    <div className="shareImgContainer">
+                        <img src={URL.createObjectURL(file)} alt="" className="shareImg" />
+                        <Cancel className="shareCancelImg" onClick={() => setFile(null)}/>
+                    </div>
+                )}
                 <form className="shareBottom" onSubmit={submitHandler} >
                 {/* <form className="shareBottom" > */}
                     <div className="shareOptions">
