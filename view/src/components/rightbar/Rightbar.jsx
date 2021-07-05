@@ -13,11 +13,9 @@ export default function Rightbar({user}) {
     const [followers, setFollowers] = useState([]);
     const [followings, setFollowings] = useState([]);
     const {user: currentUser, dispatch} = useContext(AuthContext);
-    const [followed, setFollowed] = useState(currentUser.followings.includes(user?._id));
+    const [followed, setFollowed] = useState(currentUser.following.includes(user?._id));
 
-    useEffect(() => {
-        setFollowed(currentUser.following.includes(user?.id));
-    }, [currentUser, user.id]);
+    
 
     useEffect(() => {
         const getFollowing = async () => {
@@ -40,6 +38,16 @@ export default function Rightbar({user}) {
         getFollowers();
     },[user._id, followed]);
 
+    useEffect(() => {
+        const followState = async () =>{
+            try {
+                await setFollowed(currentUser.following.includes(user?._id));
+            }catch (error) {
+                console.log(error);
+            }
+        }
+        followState();
+    }, [currentUser, user._id]);
 
     const followHandler = async () => {
         try{
@@ -115,6 +123,7 @@ export default function Rightbar({user}) {
             </>
         )
     }
+
     return (
         <div className="rightbar">
             <div className="rightbarWrapper">
