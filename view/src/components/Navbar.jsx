@@ -45,6 +45,7 @@ export default function Navbar() {
                     {/* eslint-disable-next-line */}
                     <img src={user.profilePicture ? PF + user.profilePicture : PF + 'person/noAvatar.png'} alt="Profile picture" className="navbarProfilePic" />
                 </Link>
+                
             </div>
         </div>
     )
