@@ -23,11 +23,12 @@ export default function Messenger() {
                         <div className="chatBoxTop">
                             <Message />
                             <Message />
-                            <Message />
+                            <Message own={true}/>
                             <Message />
                         </div>
                         <div className="chatBoxBottom">
-
+                            <textarea className="chatMessageInput" placeholder="Write a message.."></textarea>
+                            <button className="chatSubmitButton" type="submit">Send</button>
                         </div>
                     </div>
                 </div>

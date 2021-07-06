@@ -28,3 +28,9 @@
 .message.own {
     align-items: flex-end;
 }
+.message.own .messageTop {
+    flex-direction: row-reverse;
+}
+.message.own .messageText { 
+    background: linear-gradient(15deg, #13547a 0%, #39fad7 100%);
+}

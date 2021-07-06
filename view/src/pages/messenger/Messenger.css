@@ -18,6 +18,12 @@
 .chatBox {
     flex: 5.5;
 }
+.chatBoxBottom {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .chatOnline {
     flex: 3;
 }
