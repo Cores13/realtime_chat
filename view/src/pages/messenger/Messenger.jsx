@@ -7,14 +7,33 @@ import {useContext} from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
+import {useRef} from 'react';
+import {io} from 'socket.io-client';
 
 export default function Messenger() {
     const [conversations, setConversations] = useState([]);
     const [currentChat, setCurrentChat] = useState(null);
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState([]);
+    const [arrivalMessage, setArrivalMessage] = useState(null);
+    const socket = useRef();
     const {user} = useContext(AuthContext);
-    
+    const scrollRef = useRef();
+
+    useEffect(() => {
+        socket.current = io('ws://localhost:8900');
+        socket.current.on('getMessage', data => {
+            
+        })
+    },[]);
+
+    useEffect(() => {
+        socket.current.emit('addUser', user._id);
+        socket.current.on('getUsers', (users)=>{
+            console.log(users);
+        });
+    }, [user]);
+
     useEffect(() =>{
         const getConversations = async () =>{
             try{
@@ -27,7 +46,6 @@ export default function Messenger() {
         getConversations();
     }, [user._id]);
 
-    // console.log(currentChat);
     useEffect(() =>{
         const getMessages = async () =>{
             try{
@@ -47,13 +65,33 @@ export default function Messenger() {
             text: newMessage,
             conversationId: currentChat._id,
         };
+
+        const recieverId = currentChat.members.find(member => member !== user._id);
+
+        socket.current.emit('sendMessage', {
+            senderId: user._id,
+            recieverId: recieverId,
+            text: newMessage
+        });
+
         try{
             const res = await axios.post('/messages', message);
             setMessages([...messages, res.data]);
+            setNewMessage('');
         }catch (error){
             console.log(error);
         }
-    }
+    };
+
+    // useEffect(() => {
+    //     socket.current.on('getMessage', data => {
+
+    //     })
+    // },[]);
+
+    useEffect(() => {
+        scrollRef.current?.scrollIntoView({behavior: 'smooth'});
+    }, [messages]);
 
 
     return (
@@ -75,9 +113,10 @@ export default function Messenger() {
                     <div className="chatBoxWrapper">
                         {currentChat ? <>
                         <div className="chatBoxTop">
-                            {/* TODO */}
                             {messages.map((m) => (
-                                <Message key={m._id} own={m.sender === user._id} message={m}/>
+                                <div ref={scrollRef}>
+                                    <Message key={m._id} own={m.sender === user._id} message={m}/>
+                                </div>
                             ))}
                         </div>
                         <div className="chatBoxBottom">

@@ -31,7 +31,6 @@ function App() {
             {user ? <Redirect to='/'/> : <Register />}
           </Route>
           <Route path="/messenger">
-            {/* <Messenger/> */}
             {!user ? <Redirect to='/login'/> : <Messenger />}
           </Route>
           <Route path="/profile/:username">
