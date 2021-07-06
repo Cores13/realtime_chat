@@ -2,6 +2,7 @@ import './Messenger.css'
 import Navbar from '../../components/Navbar.jsx';
 import Conversations from '../../components/conversations/Conversations.jsx';
 import Message from '../../components/message/Message.jsx';
+import ChatOnline from '../../components/chatOnline/ChatOnline.jsx';
 
 export default function Messenger() {
     return (
@@ -21,7 +22,7 @@ export default function Messenger() {
                 <div className="chatBox">
                     <div className="chatBoxWrapper">
                         <div className="chatBoxTop">
-                            <Message />
+                            <Message own={true}/>
                             <Message />
                             <Message own={true}/>
                             <Message />
@@ -34,7 +35,7 @@ export default function Messenger() {
                 </div>
                 <div className="chatOnline">
                     <div className="chatOnlineWrapper">
-                        online
+                        <ChatOnline />
                     </div>
                 </div>
             </div>
