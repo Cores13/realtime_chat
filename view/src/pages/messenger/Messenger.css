@@ -61,3 +61,17 @@
     background-color: #2b2b2b;
     height: 100%;
 }
+.chatBoxWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+.noConversationText {
+    position: absolute;
+    top: 5%;
+    padding-left: 10px;
+    font-size: 5rem;
+    opacity: 0.2;
+    cursor: default;
+}
