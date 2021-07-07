@@ -11,21 +11,6 @@ var io = require('socket.io')(server,{
         transport: ['websocket']
     });
 
-// io.on('connection', function(socket) {  
-//     console.log('Socket did connect');
-// });
-
-
-// const io = require('socket.io')(8000,{
-//     cors: {
-//         origins: 'http://localhost:3000',
-//         methods: ["GET", "POST"],
-//         credentials: true,
-//         allowEIO3: true
-//         },
-//         transport: ['websocket']
-// });
-
 let users = [];
 
 const addUser = (userId, socketId) => {
@@ -47,7 +32,6 @@ io.on('connection', (socket) => {
     socket.on('addUser', (userId) => {
         addUser(userId, socket.id);
         io.emit('getUsers', users);
-        console.log(users);
     });
 
     //send and get messages
