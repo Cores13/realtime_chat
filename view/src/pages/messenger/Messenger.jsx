@@ -23,9 +23,18 @@ export default function Messenger() {
     useEffect(() => {
         socket.current = io('ws://localhost:8900');
         socket.current.on('getMessage', data => {
-            
-        })
+            setArrivalMessage({
+                sender: data.senderId,
+                text: data.text,
+                createdAt:  Date.now(),
+            });
+        });
     },[]);
+
+    useEffect(() => {
+        arrivalMessage && currentChat?.members.includes(arrivalMessage.sender) &&
+        setMessages((prev)=> [...prev, arrivalMessage]);
+    }, [arrivalMessage, currentChat]);
 
     useEffect(() => {
         socket.current.emit('addUser', user._id);
@@ -75,7 +84,7 @@ export default function Messenger() {
         });
 
         try{
-            const res = await axios.post('/messages', message);
+            const res = await axios.post('/messages/', message);
             setMessages([...messages, res.data]);
             setNewMessage('');
         }catch (error){

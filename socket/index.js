@@ -1,8 +1,30 @@
-const io = require('socket.io')(8900,{
-    cors: {
-        origin: 'http://localhost:3000',
-    },
-});
+var express = require('express')
+var app = express()
+var server = require('http').Server(app)
+var io = require('socket.io')(server,{
+        cors: {
+            origin: 'http://localhost:3000',
+            methods: ["GET", "POST"],
+            credentials: true,
+            allowEIO3: true
+        },
+        transport: ['websocket']
+    });
+
+// io.on('connection', function(socket) {  
+//     console.log('Socket did connect');
+// });
+
+
+// const io = require('socket.io')(8000,{
+//     cors: {
+//         origins: 'http://localhost:3000',
+//         methods: ["GET", "POST"],
+//         credentials: true,
+//         allowEIO3: true
+//         },
+//         transport: ['websocket']
+// });
 
 let users = [];
 
@@ -29,9 +51,9 @@ io.on('connection', (socket) => {
     });
 
     //send and get messages
-    socket.on('sendMessage', (userId, recieverId, text) => {
-        const user = getUser(userId);
-        io.to(user.socketId).emit('getMessage', {
+    socket.on('sendMessage', (senderId, recieverId, text) => {
+        const user = getUser(senderId);
+        io.to(user?.socketId).emit('getMessage', {
             senderId, 
             text,
         });
@@ -44,3 +66,7 @@ io.on('connection', (socket) => {
         io.emit('getUsers', users);
     });
 })
+
+server.listen(8900, function() {
+    console.log('listening on *:8900');
+    });

@@ -16,10 +16,12 @@ const path = require('path');
 dotenv.config();
 
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
+
 // middleware
 app.use(express.json());
 app.use(helmet());
 app.use(morgan('common'));
+
 
 const imageUpload = multer({
     storage: multer.diskStorage({
