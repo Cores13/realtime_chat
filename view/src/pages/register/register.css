@@ -72,10 +72,15 @@
 .registerRegisterButton {
     width: 70%;
     align-self: center;
-    height: 50px;
     border-radius: 10px;
     border: none;
     color: white;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    /* padding-top: 15px; */
     /* background: #536976;  
     background: -webkit-linear-gradient(to top,#f12711 -20%, darkorange 50%, #f5af19 120%);
     background: linear-gradient(to top,#f12711 -20%, darkorange 50%, #f5af19 120%); */
